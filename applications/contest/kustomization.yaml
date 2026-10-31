@@ -11,7 +11,7 @@ resources:
 
 images:
   - name: ghcr.io/100razpo30-afk/contest/contest-api
-    newTag: 02ef01093d213cf346563fbac53f37a66cfe58eb
+    newTag: 88080b92c311c549eeb890bfaa854217456c10f8
   - name: ghcr.io/100razpo30-afk/contest/contest-front
-    newTag: 02ef01093d213cf346563fbac53f37a66cfe58eb
+    newTag: 88080b92c311c549eeb890bfaa854217456c10f8
 
