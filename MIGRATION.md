@@ -1,6 +1,6 @@
 # Migration notes
 
-Этот репозиторий пока не подключён к Argo CD и не изменяет живой кластер.
+Этот репозиторий пока не подключён к Argo CD. Сам Argo CD установлен отдельно обычным Helm-релизом, но ещё не управляет приложениями кластера.
 
 ## Что перенесено
 
@@ -34,12 +34,11 @@
 ## Безопасный первый запуск
 
 1. Создать Git-репозиторий и заменить placeholder URL в bootstrap-файлах.
-2. Установить Argo CD.
-3. Переименовать `*.yaml.example` в `*.yaml` после проверки URL.
-4. Добавить публичный OCI registry Envoy Gateway в Argo CD при необходимости.
-5. Синхронизировать контроллеры по одному: cert-manager, MetalLB, Envoy Gateway, VictoriaMetrics.
-6. Синхронизировать `cert-manager-config`, `metallb-config`, `gateway-config`, `monitoring-config`.
-7. Убедиться, что существующие Secret сохранены.
-8. Синхронизировать `kontent`, затем `contest`, наблюдая за rollout.
-9. Только после стабильной работы обсуждать `automated`, `selfHeal` и `prune`.
+2. Переименовать `*.yaml.example` в `*.yaml` после проверки URL.
+3. Добавить публичный OCI registry Envoy Gateway в Argo CD при необходимости.
+4. Синхронизировать контроллеры по одному: cert-manager, MetalLB, Envoy Gateway, VictoriaMetrics.
+5. Синхронизировать `cert-manager-config`, `metallb-config`, `gateway-config`, `monitoring-config` и `argocd-config`.
+6. Убедиться, что существующие Secret сохранены.
+7. Синхронизировать `kontent`, затем `contest`, наблюдая за rollout.
+8. Только после стабильной работы обсуждать `automated`, `selfHeal` и `prune`.
 

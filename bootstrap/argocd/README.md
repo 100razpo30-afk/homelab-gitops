@@ -1,12 +1,12 @@
 # Argo CD bootstrap
 
-Bootstrap намеренно оставлен шаблоном до создания удалённого репозитория.
+Argo CD уже установлен в кластер Helm-релизом `argocd`. GitOps bootstrap намеренно оставлен шаблоном до подключения удалённого репозитория.
 
 После появления URL репозитория:
 
 1. заменить `REPLACE_WITH_GITOPS_REPO_URL` в `applicationset.yaml.example`;
 2. переименовать файл в `applicationset.yaml`;
-3. установить Argo CD;
+3. переименовать остальные проверенные `*.yaml.example` в `*.yaml`;
 4. применить `project.yaml`, `platform-applications.yaml` и `applicationset.yaml`;
 5. первую синхронизацию выполнить вручную через UI.
 

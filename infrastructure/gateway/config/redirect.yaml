@@ -14,6 +14,7 @@ spec:
     - minio.local.lan
     - minio-console.local.lan
     - grafana.local.lan
+    - argocd.local.lan
   rules:
     - filters:
         - type: RequestRedirect

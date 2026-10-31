@@ -1,0 +1,45 @@
+configs:
+  params:
+    server.insecure: true
+
+  cm:
+    url: https://argocd.local.lan
+
+    oidc.config: |
+      name: Keycloak
+      issuer: https://keycloak.local.lan/realms/kontent
+      clientID: argocd
+      enablePKCEAuthentication: true
+      refreshTokenThreshold: 2m
+      requestedScopes:
+        - openid
+        - profile
+        - email
+        - groups
+        - offline_access
+      rootCA: |
+        -----BEGIN CERTIFICATE-----
+        MIIBejCCASCgAwIBAgIUZ3wc8eUsFjFXUbmWJfAAgHqLxeUwCgYIKoZIzj0EAwIw
+        GzEZMBcGA1UEAxMQa29udGVudC1sb2NhbC1jYTAeFw0yNjEwMjgwMDM1MThaFw0z
+        NjEwMjUwMDM1MThaMBsxGTAXBgNVBAMTEGtvbnRlbnQtbG9jYWwtY2EwWTATBgcq
+        hkjOPQIBBggqhkjOPQMBBwNCAAT/2QH+c73e0H257Bb9fUDY1iuPNdeRwQ//1+h3
+        tTX1KCijH6ppeGaQ3b73kVzo6MCsXZvEqvq51b0MN43s/DXdo0IwQDAOBgNVHQ8B
+        Af8EBAMCAqQwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUpGQcJdUgAH/UfXoB
+        u25ED4t8VWkwCgYIKoZIzj0EAwIDSAAwRQIgKPaz6z3TlihdcrEhPplY9RCDIOIs
+        A3zQ20ePuzvgDgYCIQD0Z9E9Gu5Z34AZYsGKqghxWdbJ3q5mskSlpQ4c/0KEig==
+        -----END CERTIFICATE-----
+
+  rbac:
+    scopes: "[groups]"
+    policy.csv: |
+      g, argocd-admins, role:admin
+      g, argocd-readonly, role:readonly
+
+server:
+  service:
+    type: ClusterIP
+
+redis:
+  image:
+    repository: docker.io/library/redis
+    tag: 8.6.4-alpine
