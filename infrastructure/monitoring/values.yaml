@@ -1,0 +1,23 @@
+grafana:
+  ingress:
+    enabled: false
+
+prometheus-node-exporter:
+  tolerations:
+    - operator: Exists
+
+victoria-metrics-operator:
+  operator:
+    disable_prometheus_converter: false
+
+vmsingle:
+  spec:
+    resources:
+      limits:
+        memory: 512Mi
+      requests:
+        memory: 256Mi
+    retentionPeriod: 30d
+    storage:
+      storageClassName: local-path
+

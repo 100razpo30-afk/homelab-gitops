@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - namespace.yaml
+  - configmap.yaml
+  - storage.yaml
+  - postgres.yaml
+  - minio.yaml
+  - api.yaml
+  - web.yaml
+  - keycloak.yaml
+  - http-routes.yaml
+

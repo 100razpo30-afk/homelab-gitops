@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: homelab
+  namespace: argocd
+spec:
+  description: Homelab infrastructure and applications
+  sourceRepos:
+    - REPLACE_WITH_GITOPS_REPO_URL
+    - https://charts.jetstack.io
+    - https://metallb.github.io/metallb
+    - docker.io/envoyproxy
+    - https://victoriametrics.github.io/helm-charts/
+  destinations:
+    - namespace: "*"
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+

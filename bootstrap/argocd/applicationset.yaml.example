@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: homelab-git
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - name: contest
+            path: applications/contest
+            namespace: contest
+          - name: kontent
+            path: applications/kontent
+            namespace: kontent
+          - name: cert-manager-config
+            path: infrastructure/cert-manager/config
+            namespace: cert-manager
+          - name: metallb-config
+            path: infrastructure/metallb/config
+            namespace: metallb-system
+          - name: gateway-config
+            path: infrastructure/gateway/config
+            namespace: gateway-system
+          - name: monitoring-config
+            path: infrastructure/monitoring/config
+            namespace: monitoring
+  template:
+    metadata:
+      name: "{{name}}"
+    spec:
+      project: homelab
+      source:
+        repoURL: REPLACE_WITH_GITOPS_REPO_URL
+        targetRevision: main
+        path: "{{path}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "{{namespace}}"
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+

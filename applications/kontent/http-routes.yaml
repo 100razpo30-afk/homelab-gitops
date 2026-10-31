@@ -1,0 +1,79 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: kontent
+  namespace: kontent
+spec:
+  parentRefs:
+    - name: local-gateway
+      namespace: gateway-system
+      sectionName: https
+  hostnames:
+    - kontent.local.lan
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /api
+      backendRefs:
+        - name: api
+          port: 3000
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: web
+          port: 80
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: keycloak
+  namespace: kontent
+spec:
+  parentRefs:
+    - name: local-gateway
+      namespace: gateway-system
+      sectionName: https
+  hostnames:
+    - keycloak.local.lan
+  rules:
+    - backendRefs:
+        - name: keycloak
+          port: 8080
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: minio
+  namespace: kontent
+spec:
+  parentRefs:
+    - name: local-gateway
+      namespace: gateway-system
+      sectionName: https
+  hostnames:
+    - minio.local.lan
+  rules:
+    - backendRefs:
+        - name: minio
+          port: 9000
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: minio-console
+  namespace: kontent
+spec:
+  parentRefs:
+    - name: local-gateway
+      namespace: gateway-system
+      sectionName: https
+  hostnames:
+    - minio-console.local.lan
+  rules:
+    - backendRefs:
+        - name: minio
+          port: 9001
+
