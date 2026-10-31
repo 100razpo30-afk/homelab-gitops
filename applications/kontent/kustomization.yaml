@@ -13,7 +13,7 @@ resources:
 
 images:
   - name: ghcr.io/100razpo30-afk/kontent-api
-    newTag: c21e61b4e8ef4654d76fee881cf6e34738431319
+    newTag: 2584d7ba01bbd2670606ee2e7b35e537f6821ab2
   - name: ghcr.io/100razpo30-afk/kontent-web
-    newTag: c21e61b4e8ef4654d76fee881cf6e34738431319
+    newTag: 2584d7ba01bbd2670606ee2e7b35e537f6821ab2
 
