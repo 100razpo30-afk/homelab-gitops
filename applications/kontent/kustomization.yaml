@@ -11,3 +11,9 @@ resources:
   - keycloak.yaml
   - http-routes.yaml
 
+images:
+  - name: ghcr.io/100razpo30-afk/kontent-api
+    newTag: c21e61b4e8ef4654d76fee881cf6e34738431319
+  - name: ghcr.io/100razpo30-afk/kontent-web
+    newTag: c21e61b4e8ef4654d76fee881cf6e34738431319
+

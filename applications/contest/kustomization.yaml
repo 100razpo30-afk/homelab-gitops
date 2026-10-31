@@ -9,3 +9,9 @@ resources:
   - frontend.yaml
   - http-route.yaml
 
+images:
+  - name: ghcr.io/100razpo30-afk/contest/contest-api
+    newTag: bbd5aa0679626e1e36255f42bd99945b86799bf0
+  - name: ghcr.io/100razpo30-afk/contest/contest-front
+    newTag: bbd5aa0679626e1e36255f42bd99945b86799bf0
+
